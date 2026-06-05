@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Solicitudes Salesforce LATAM | Experian</title>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --experian-dark-blue: #1D4F91;
+            --experian-light-blue: #426DA9;
+            --experian-purple: #77127B;
+            --experian-raspberry: #C1188B;
+            --experian-magenta: #E80070;
+            --experian-white: #FFFFFF;
+            --bg-warm-casual: #FAF7F2;
+            --card-warm-border: #EFEAE2;
+            --text-warm-dark: #2F2A26;
+            --text-warm-medium: #6E6760;
+            --font-family: 'Inter', sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-warm-casual);
+            color: var(--text-warm-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 3rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .svg-icon {
+            width: 1em;
+            height: 1em;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-warm-border);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--experian-dark-blue) 0%, var(--experian-light-blue) 100%);
+            border-radius: 10px;
+            color: var(--experian-white);
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(29, 79, 145, 0.15);
+        }
+
+        .header-title-container h1 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--experian-dark-blue);
+            letter-spacing: -0.025em;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-warm-medium);
+            font-weight: 500;
+        }
+
+        .badge {
+            background-color: color-mix(in srgb, var(--experian-purple) 10%, #FFFFFF);
+            color: var(--experian-purple);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            border: 1px solid color-mix(in srgb, var(--experian-purple) 20%, transparent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card,
+        .info-section,
+        .team-contact-card {
+            background-color: var(--experian-white);
+            border: 1px solid var(--card-warm-border);
+            border-radius: 18px;
+            box-shadow: 0 4px 15px -3px rgba(139, 126, 116, 0.04);
+            transition: var(--transition-smooth);
+        }
+
+        .card,
+        .team-contact-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card {
+            --accent-color: var(--experian-dark-blue);
+            padding: 1.75rem;
+        }
+
+        .card:hover,
+        .team-contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px -10px rgba(139, 126, 116, 0.12), 0 0 0 1px var(--accent-color);
+        }
+
+        .team-contact-card:hover {
+            border-color: var(--experian-dark-blue);
+            box-shadow: 0 10px 20px -5px rgba(139, 126, 116, 0.12);
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+            background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
+            color: var(--accent-color);
+            font-size: 1.15rem;
+        }
+
+        .card:hover .card-icon {
+            background-color: var(--accent-color);
+            color: var(--experian-white);
+            transform: scale(1.05);
+        }
+
+        .card-title,
+        .info-title,
+        .team-section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-warm-dark);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .info-title,
+        .team-section-title {
+            font-size: 1.35rem;
+            color: var(--experian-dark-blue);
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            color: var(--text-warm-medium);
+            margin-bottom: 1.5rem;
+            min-height: 66px;
+            line-height: 1.5;
+        }
+
+        .card-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .card-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .check-bullet {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
+            color: var(--accent-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 1px;
+            transition: var(--transition-smooth);
+            font-size: 0.75rem;
+        }
+
+        .card:hover .check-bullet {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+            color: var(--experian-white);
+        }
+
+        .team-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-member {
+            border: 1px solid var(--card-warm-border);
+            border-radius: 10px;
+            background-color: var(--bg-warm-casual);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .team-member[open] {
+            border-color: var(--accent-color);
+            background-color: var(--experian-white);
+        }
+
+        summary {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem;
+            cursor: pointer;
+            list-style: none;
+            outline: none;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .member-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: color-mix(in srgb, var(--accent-color) 15%, #FFFFFF);
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .member-info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .member-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .member-role {
+            font-size: 0.7rem;
+            color: var(--text-warm-medium);
+        }
+
+        .details-arrow {
+            margin-left: auto;
+            color: var(--text-warm-medium);
+            display: flex;
+            align-items: center;
+            transition: transform 0.25s ease;
+        }
+
+        .team-member[open] .details-arrow {
+            transform: rotate(180deg);
+            color: var(--accent-color);
+        }
+
+        .member-detail {
+            padding: 0.4rem 0.6rem 0.6rem 2.5rem;
+            font-size: 0.75rem;
+            color: var(--text-warm-medium);
+            line-height: 1.4;
+            border-top: 1px dashed var(--card-warm-border);
+        }
+
+        .card-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-family);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            border: 1.5px solid var(--accent-color);
+            background-color: var(--experian-white);
+            color: var(--accent-color);
+            gap: 0.4rem;
+        }
+
+        .card:hover .card-button {
+            background-color: var(--accent-color);
+            color: var(--experian-white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-section {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--card-warm-border);
+        }
+
+        .info-icon {
+            color: var(--experian-purple);
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .step-number-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: color-mix(in srgb, var(--experian-purple) 15%, #FFFFFF);
+            border: 2px solid var(--experian-purple);
+            color: var(--experian-purple);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-title {
+            font-size: 1.05rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-warm-medium);
+        }
+
+        .team-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .team-section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            border-bottom: 1px solid var(--card-warm-border);
+            padding-bottom: 1rem;
+        }
+
+        .team-section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-warm-medium);
+        }
+
+        .team-contact-card {
+            padding: 1.5rem;
+            align-items: center;
+        }
+
+        .team-avatar-lg {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--experian-white);
+            background: linear-gradient(135deg, var(--avatar-color) 0%, color-mix(in srgb, var(--avatar-color) 60%, #FFFFFF) 100%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card-role {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-warm-medium);
+            margin-bottom: 1rem;
+        }
+
+        .team-card-contacts {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            border-top: 1px solid var(--card-warm-border);
+            padding-top: 1rem;
+        }
+
+        .team-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.775rem;
+            color: var(--text-warm-medium);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .team-contact-item:hover {
+            color: var(--experian-dark-blue);
+        }
+
+        .team-contact-item svg {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width:1024px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width:768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .badge {
+                align-self: flex-start;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .step-item {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .step-number-badge {
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg style="display:none;">
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </symbol>
+        <symbol id="icon-file" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </symbol>
+        <symbol id="icon-wrench" viewBox="0 0 24 24">
+            <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+            </path>
+        </symbol>
+        <symbol id="icon-key" viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </symbol>
+        <symbol id="icon-users" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </symbol>
+        <symbol id="icon-email" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </symbol>
+        <symbol id="icon-chat" viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </symbol>
+        <symbol id="icon-help" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </symbol>
+    </svg>
+    <div class="container">
+        <header>
+            <div class="header-brand">
+                <div class="header-logo">S</div>
+                <div class="header-title-container">
+                    <h1>Gestión de Solicitudes Salesforce LATAM</h1><span class="header-subtitle">Canal Oficial de
+                        Operaciones & Configuración Experian</span>
+                </div>
+            </div>
+            <span class="badge">Experian LATAM</span>
+        </header>
+        <main class="cards-grid grid-4">
+            <!-- Card 1 -->
+            <section class="card" style="--accent-color: var(--experian-light-blue);" aria-labelledby="card-title-1">
+                <div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><svg class="svg-icon">
+                                <use href="#icon-file"></use>
+                            </svg></div>
+                        <h2 class="card-title" id="card-title-1">Historia de Usuario</h2>
+                    </div>
+                    <p class="card-description">Crea y documenta requerimientos funcionales desde la perspectiva del
+                        usuario de negocio.</p>
+                    <ul class="card-list">
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Especificar rol ("Como...") y meta</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Definir criterios de aceptación</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Priorizar valor comercial</span></li>
+                    </ul>
+                </div>
+                <a href="#crear-historia" class="card-button"><span>Crear Historia</span><svg class="svg-icon">
+                        <use href="#icon-arrow"></use>
+                    </svg></a>
+            </section>
+            <!-- Card 2 -->
+            <section class="card" style="--accent-color: var(--experian-purple);" aria-labelledby="card-title-2">
+                <div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><svg class="svg-icon">
+                                <use href="#icon-wrench"></use>
+                            </svg></div>
+                        <h2 class="card-title" id="card-title-2">Requerimiento Técnico</h2>
+                    </div>
+                    <p class="card-description">Solicita configuraciones específicas, campos personalizados o cambios en
+                        layouts.</p>
+                    <ul class="card-list">
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Campos personalizados adicionales</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Vistas de página y layouts</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Flujos y automatizaciones básicas</span></li>
+                    </ul>
+                </div>
+                <a href="#crear-requerimiento" class="card-button"><span>Crear Requerimiento</span><svg
+                        class="svg-icon">
+                        <use href="#icon-arrow"></use>
+                    </svg></a>
+            </section>
+            <!-- Card 3 -->
+            <section class="card" style="--accent-color: var(--experian-raspberry);" aria-labelledby="card-title-3">
+                <div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><svg class="svg-icon">
+                                <use href="#icon-key"></use>
+                            </svg></div>
+                        <h2 class="card-title" id="card-title-3">Solicitud de Acceso</h2>
+                    </div>
+                    <p class="card-description">Administración de usuarios, asignación de licencias, perfiles y
+                        desbloqueos.</p>
+                    <ul class="card-list">
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Alta o baja de usuarios LATAM</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Perfiles, roles y conjuntos de permisos</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Reseteos de contraseñas y MFA</span></li>
+                    </ul>
+                </div>
+                <a href="#solicitar-acceso" class="card-button"><span>Solicitar Acceso</span><svg class="svg-icon">
+                        <use href="#icon-arrow"></use>
+                    </svg></a>
+            </section>
+            <!-- Card 4 -->
+            <section class="card" style="--accent-color: var(--experian-magenta);" aria-labelledby="card-title-4">
+                <div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><svg class="svg-icon">
+                                <use href="#icon-users"></use>
+                            </svg></div>
+                        <h2 class="card-title" id="card-title-4">Equipo Salesforce</h2>
+                    </div>
+                    <p class="card-description">Célula de desarrollo y soporte encargada del mantenimiento de la
+                        plataforma.</p>
+                    <div class="team-list">
+                        <details class="team-member">
+                            <summary>
+                                <div class="member-avatar">AS</div>
+                                <div class="member-info"><span class="member-name">Ana Silva</span><span
+                                        class="member-role">SF Admin</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
+                            </summary>
+                            <div class="member-detail">Administración general, gestión de accesos, roles, perfiles y
+                                soporte del día a día en LATAM.</div>
+                        </details>
+                        <details class="team-member">
+                            <summary>
+                                <div class="member-avatar">CP</div>
+                                <div class="member-info"><span class="member-name">Carlos Pérez</span><span
+                                        class="member-role">Developer Lead</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
+                            </summary>
+                            <div class="member-detail">Desarrollo Apex, LWC, integraciones y flujos complejos de
+                                automatización.</div>
+                        </details>
+                        <details class="team-member">
+                            <summary>
+                                <div class="member-avatar">MR</div>
+                                <div class="member-info"><span class="member-name">María Rodríguez</span><span
+                                        class="member-role">Product Owner</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
+                            </summary>
+                            <div class="member-detail">Definición de roadmap, priorización del backlog de solicitudes y
+                                alineación estratégica.</div>
+                        </details>
+                    </div>
+                </div>
+                <a href="#nuestro-equipo" class="card-button"><span>Contactar Equipo</span><svg class="svg-icon">
+                        <use href="#icon-arrow"></use>
+                    </svg></a>
+            </section>
+        </main>
+
+        <article class="info-section">
+            <div class="info-header">
+                <div class="info-icon"><svg class="svg-icon">
+                        <use href="#icon-help"></use>
+                    </svg></div>
+                <h2 class="info-title">¿Cómo elegir correctamente?</h2>
+            </div>
+            <div class="steps-container grid-4">
+                <div class="step-item">
+                    <div class="step-number-badge">1</div>
+                    <h3 class="step-title">Identifica la necesidad</h3>
+                    <p class="step-description">Define si necesitas dar de alta un usuario, actualizar datos, cambiar
+                        vistas de campos o construir reportes comerciales.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number-badge">2</div>
+                    <h3 class="step-title">Verifica los prerrequisitos</h3>
+                    <p class="step-description">Asegúrate de contar con la autorización de tu manager de área y tener
+                        listos los insumos (como layouts o archivos de carga).</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number-badge">3</div>
+                    <h3 class="step-title">Selecciona el tipo</h3>
+                    <p class="step-description">Compara los puntos clave en las tarjetas de arriba para encontrar la
+                        opción exacta de tu solicitud.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number-badge">4</div>
+                    <h3 class="step-title">Envia tu solicitud</h3>
+                    <p class="step-description">Presiona el botón de acción correspondiente para abrir el formulario y
+                        registrar tu caso formalmente.</p>
+                </div>
+            </div>
+        </article>
+
+        <section class="team-section" id="nuestro-equipo">
+            <div class="team-section-header">
+                <h2 class="team-section-title">Conoce a nuestro equipo</h2>
+                <p class="team-section-subtitle">El equipo de expertos dedicado a la administración, desarrollo y
+                    evolución de la plataforma Salesforce LATAM.</p>
+            </div>
+            <div class="team-cards-grid grid-4"></div>
+        </section>
+    </div>
+
+    <script>
+        const team = [{ name: 'Ana Silva', role: 'Salesforce Administrator', email: 'ana.silva@experian.com', user: '@asilva', color: 'var(--experian-dark-blue)' }, { name: 'Carlos Pérez', role: 'Lead Developer', email: 'carlos.perez@experian.com', user: '@cperez', color: 'var(--experian-purple)' }, { name: 'María Rodríguez', role: 'Product Owner', email: 'maria.rodriguez@experian.com', user: '@mrodriguez', color: 'var(--experian-magenta)' }, { name: 'Juan Gómez', role: 'QA Automation Engineer', email: 'juan.gomez@experian.com', user: '@jgomez', color: 'var(--experian-raspberry)' }, { name: 'Diana Torres', role: 'Business Analyst', email: 'diana.torres@experian.com', user: '@dtorres', color: '#0D9488' }, { name: 'Andrés Mendoza', role: 'Integrations Engineer', email: 'andres.mendoza@experian.com', user: '@amendoza', color: '#475569' }, { name: 'Laura Restrepo', role: 'UX/UI Designer', email: 'laura.restrepo@experian.com', user: '@lrestrepo', color: '#EA580C' }];
+        document.querySelector('.team-cards-grid').innerHTML = team.map(m => `<div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: ${m.color}">${m.name.split(' ').map(n => n[0]).join('')}</div><h3 class="team-card-name">${m.name}</h3><p class="team-card-role">${m.role}</p><div class="team-card-contacts"><a href="mailto:${m.email}" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>${m.email}</span></a><a href="#chat-${m.user.substring(1)}" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>${m.user}</span></a></div></div>`).join('');
+    </script>
+</body>
+
+</html>
