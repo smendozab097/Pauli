@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Solicitudes Salesforce LATAM | Experian</title>
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
+<style>
+        .experian-container *,
+        .experian-container *::before,
+        .experian-container *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -33,7 +22,7 @@
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        body {
+        .experian-container {
             font-family: var(--font-family);
             background-color: var(--bg-warm-casual);
             color: var(--text-warm-dark);
@@ -526,9 +515,12 @@
             }
         }
     </style>
-</head>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<body>
+<div class="experian-container">
     <svg style="display:none;">
         <symbol id="icon-check" viewBox="0 0 24 24">
             <polyline points="20 6 9 17 4 12"></polyline>
@@ -584,7 +576,10 @@
             <span class="badge">Experian LATAM</span>
         </header>
         <main class="cards-grid grid-4">
-            <!-- Card 1 -->
+
+
+<!-- -------------------- Card 1 ---------------------->
+
             <section class="card" style="--accent-color: var(--experian-light-blue);" aria-labelledby="card-title-1">
                 <div>
                     <div class="card-header-row">
@@ -594,24 +589,27 @@
                         <h2 class="card-title" id="card-title-1">Historia de Usuario</h2>
                     </div>
                     <p class="card-description">Crea y documenta requerimientos funcionales desde la perspectiva del
-                        usuario de negocio.</p>
+                        usuario de negocio. Utiliza esta opción para nuevos requerimientos funcionales o ajuste en Salesforce.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Especificar rol ("Como...") y meta</span></li>
+                                </svg></span><span>Define claramente el usuario</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Definir criterios de aceptación</span></li>
+                                </svg></span><span>Especifica el valor esperado</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Priorizar valor comercial</span></li>
+                                </svg></span><span>Evita duplicidades</span></li>
                     </ul>
                 </div>
-                <a href="#crear-historia" class="card-button"><span>Crear Historia</span><svg class="svg-icon">
+                <a href="#crear-historia" class="card-button"><span>Crear Historia en Jira</span><svg class="svg-icon">
                         <use href="#icon-arrow"></use>
                     </svg></a>
             </section>
-            <!-- Card 2 -->
+
+
+<!-- -------------------- Card 2  ---------------------->
+
             <section class="card" style="--accent-color: var(--experian-purple);" aria-labelledby="card-title-2">
                 <div>
                     <div class="card-header-row">
@@ -620,26 +618,34 @@
                             </svg></div>
                         <h2 class="card-title" id="card-title-2">Requerimiento Técnico</h2>
                     </div>
-                    <p class="card-description">Solicita configuraciones específicas, campos personalizados o cambios en
-                        layouts.</p>
+                    <p class="card-description">Utiliza esta opción cuando necesites registrar un requerimiento general que no implique un desarrollo inmediato.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Campos personalizados adicionales</span></li>
+                                </svg></span><span>SOlicitudes funcionales operativas</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Vistas de página y layouts</span></li>
+                                </svg></span><span>Actualización de información</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Flujos y automatizaciones básicas</span></li>
+                                </svg></span><span>Creación o modificación de reportes</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Modificacion de aprobadores</span></li>
+                        <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
+                                    <use href="#icon-check"></use>
+                                </svg></span><span>Soporte en procesos</span></li>
                     </ul>
                 </div>
-                <a href="#crear-requerimiento" class="card-button"><span>Crear Requerimiento</span><svg
+                <a href="#crear-requerimiento" class="card-button"><span>Crear Requerimiento en Service Now</span><svg
                         class="svg-icon">
                         <use href="#icon-arrow"></use>
                     </svg></a>
             </section>
-            <!-- Card 3 -->
+
+
+<!-- -------------------- Card 3 ---------------------->
+
             <section class="card" style="--accent-color: var(--experian-raspberry);" aria-labelledby="card-title-3">
                 <div>
                     <div class="card-header-row">
@@ -648,25 +654,27 @@
                             </svg></div>
                         <h2 class="card-title" id="card-title-3">Solicitud de Acceso</h2>
                     </div>
-                    <p class="card-description">Administración de usuarios, asignación de licencias, perfiles y
-                        desbloqueos.</p>
+                    <p class="card-description">Administración de usuarios. Utiliza esta opción si necesitas acceso a Salesforce o permisos adicionales dentro de la plataforma.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Alta o baja de usuarios LATAM</span></li>
+                                </svg></span><span>Nuevos Usuarios</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Perfiles, roles y conjuntos de permisos</span></li>
+                                </svg></span><span>Modificación o ajuste de roles y permisos</span></li>
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
-                                </svg></span><span>Reseteos de contraseñas y MFA</span></li>
+                                </svg></span><span>Control de accesos</span></li>
                     </ul>
                 </div>
                 <a href="#solicitar-acceso" class="card-button"><span>Solicitar Acceso</span><svg class="svg-icon">
                         <use href="#icon-arrow"></use>
                     </svg></a>
             </section>
-            <!-- Card 4 -->
+
+
+<!-- -------------------- Card 4 ---------------------->
+
             <section class="card" style="--accent-color: var(--experian-magenta);" aria-labelledby="card-title-4">
                 <div>
                     <div class="card-header-row">
@@ -678,6 +686,8 @@
                     <p class="card-description">Célula de desarrollo y soporte encargada del mantenimiento de la
                         plataforma.</p>
                     <div class="team-list">
+
+            <!-- -------------------- Miembro 1 ---------------------->
                         <details class="team-member">
                             <summary>
                                 <div class="member-avatar">AS</div>
@@ -690,6 +700,8 @@
                             <div class="member-detail">Administración general, gestión de accesos, roles, perfiles y
                                 soporte del día a día en LATAM.</div>
                         </details>
+
+            <!-- -------------------- Miembro 2 ---------------------->
                         <details class="team-member">
                             <summary>
                                 <div class="member-avatar">CP</div>
@@ -702,6 +714,8 @@
                             <div class="member-detail">Desarrollo Apex, LWC, integraciones y flujos complejos de
                                 automatización.</div>
                         </details>
+
+            <!-- -------------------- Miembro 3 ---------------------->
                         <details class="team-member">
                             <summary>
                                 <div class="member-avatar">MR</div>
@@ -763,14 +777,15 @@
                 <p class="team-section-subtitle">El equipo de expertos dedicado a la administración, desarrollo y
                     evolución de la plataforma Salesforce LATAM.</p>
             </div>
-            <div class="team-cards-grid grid-4"></div>
+            <div class="team-cards-grid grid-4">
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: var(--experian-dark-blue)">AS</div><h3 class="team-card-name">Ana Silva</h3><p class="team-card-role">Salesforce Administrator</p><div class="team-card-contacts"><a href="mailto:ana.silva@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>ana.silva@experian.com</span></a><a href="#chat-asilva" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@asilva</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: var(--experian-purple)">CP</div><h3 class="team-card-name">Carlos Pérez</h3><p class="team-card-role">Lead Developer</p><div class="team-card-contacts"><a href="mailto:carlos.perez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>carlos.perez@experian.com</span></a><a href="#chat-cperez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@cperez</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: var(--experian-magenta)">MR</div><h3 class="team-card-name">María Rodríguez</h3><p class="team-card-role">Product Owner</p><div class="team-card-contacts"><a href="mailto:maria.rodriguez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>maria.rodriguez@experian.com</span></a><a href="#chat-mrodriguez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@mrodriguez</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: var(--experian-raspberry)">JG</div><h3 class="team-card-name">Juan Gómez</h3><p class="team-card-role">QA Automation Engineer</p><div class="team-card-contacts"><a href="mailto:juan.gomez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>juan.gomez@experian.com</span></a><a href="#chat-jgomez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@jgomez</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: #0D9488">DT</div><h3 class="team-card-name">Diana Torres</h3><p class="team-card-role">Business Analyst</p><div class="team-card-contacts"><a href="mailto:diana.torres@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>diana.torres@experian.com</span></a><a href="#chat-dtorres" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@dtorres</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: #475569">AM</div><h3 class="team-card-name">Andrés Mendoza</h3><p class="team-card-role">Integrations Engineer</p><div class="team-card-contacts"><a href="mailto:andres.mendoza@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>andres.mendoza@experian.com</span></a><a href="#chat-amendoza" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@amendoza</span></a></div></div>
+                <div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: #EA580C">LR</div><h3 class="team-card-name">Laura Restrepo</h3><p class="team-card-role">UX/UI Designer</p><div class="team-card-contacts"><a href="mailto:laura.restrepo@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>laura.restrepo@experian.com</span></a><a href="#chat-lrestrepo" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@lrestrepo</span></a></div></div>
+            </div>
         </section>
     </div>
-
-    <script>
-        const team = [{ name: 'Ana Silva', role: 'Salesforce Administrator', email: 'ana.silva@experian.com', user: '@asilva', color: 'var(--experian-dark-blue)' }, { name: 'Carlos Pérez', role: 'Lead Developer', email: 'carlos.perez@experian.com', user: '@cperez', color: 'var(--experian-purple)' }, { name: 'María Rodríguez', role: 'Product Owner', email: 'maria.rodriguez@experian.com', user: '@mrodriguez', color: 'var(--experian-magenta)' }, { name: 'Juan Gómez', role: 'QA Automation Engineer', email: 'juan.gomez@experian.com', user: '@jgomez', color: 'var(--experian-raspberry)' }, { name: 'Diana Torres', role: 'Business Analyst', email: 'diana.torres@experian.com', user: '@dtorres', color: '#0D9488' }, { name: 'Andrés Mendoza', role: 'Integrations Engineer', email: 'andres.mendoza@experian.com', user: '@amendoza', color: '#475569' }, { name: 'Laura Restrepo', role: 'UX/UI Designer', email: 'laura.restrepo@experian.com', user: '@lrestrepo', color: '#EA580C' }];
-        document.querySelector('.team-cards-grid').innerHTML = team.map(m => `<div class="team-contact-card"><div class="team-avatar-lg" style="--avatar-color: ${m.color}">${m.name.split(' ').map(n => n[0]).join('')}</div><h3 class="team-card-name">${m.name}</h3><p class="team-card-role">${m.role}</p><div class="team-card-contacts"><a href="mailto:${m.email}" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>${m.email}</span></a><a href="#chat-${m.user.substring(1)}" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>${m.user}</span></a></div></div>`).join('');
-    </script>
-</body>
-
-</html>
+</div>
