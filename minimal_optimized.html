@@ -1090,36 +1090,40 @@
                 <div class="team-contact-card"><div class="team-avatar-lg">LR</div><h3 class="team-card-name">Laura Restrepo</h3><p class="team-card-role">UX/UI Designer</p><div class="team-card-contacts"><a href="mailto:laura.restrepo@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>laura.restrepo@experian.com</span></a><a href="#chat-lrestrepo" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@lrestrepo</span></a></div></div>
             </div>
         </section>
-    </div>
-</div>
+        
+        <script>
+            (function() {
+                // Al ejecutarse justo antes de cerrar el contenedor, los elementos ya existen
+                // Usamos delegación de eventos a nivel del contenedor principal
+                const experianContainer = document.querySelector('.experian-container');
+                if (!experianContainer) return;
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.addEventListener('click', e => {
-            const step = e.target.closest('.hero-step');
-            if (!step) return;
-            
-            const targetId = step.getAttribute('href');
-            if (targetId && targetId.startsWith('#')) {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const container = targetElement.closest('.card') || 
-                                      (targetElement.classList.contains('team-section') ? targetElement : null) || 
-                                      document.querySelector(targetId);
-                    if (container) {
-                        container.classList.remove('highlight-focus');
-                        document.body.classList.remove('is-pulsing');
-                        void container.offsetWidth; // Reflow
-                        container.classList.add('highlight-focus');
-                        document.body.classList.add('is-pulsing');
-                        
-                        setTimeout(() => {
-                            container.classList.remove('highlight-focus');
-                            document.body.classList.remove('is-pulsing');
-                        }, 2500);
+                experianContainer.addEventListener('click', e => {
+                    const step = e.target.closest('.hero-step');
+                    if (!step) return;
+                    
+                    const targetId = step.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const cardContainer = targetElement.closest('.card') || 
+                                              (targetElement.classList.contains('team-section') ? targetElement : null) || 
+                                              document.querySelector(targetId);
+                            if (cardContainer) {
+                                cardContainer.classList.remove('highlight-focus');
+                                document.body.classList.remove('is-pulsing');
+                                void cardContainer.offsetWidth; // Reflow
+                                cardContainer.classList.add('highlight-focus');
+                                document.body.classList.add('is-pulsing');
+                                
+                                setTimeout(() => {
+                                    cardContainer.classList.remove('highlight-focus');
+                                    document.body.classList.remove('is-pulsing');
+                                }, 2500);
+                            }
+                        }
                     }
-                }
-            }
-        });
-    });
-</script>
+                });
+            })();
+        </script>
+    </div>
