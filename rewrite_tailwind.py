@@ -1,4 +1,5 @@
-<script src="https://cdn.tailwindcss.com"></script>
+with open("minimal_optimized.html", "w", encoding="utf-8") as f:
+    f.write("""<script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -38,7 +39,7 @@
       @apply relative z-10;
       animation: highlight-pulse 2.5s ease-out forwards;
     }
-    .experian-container.is-pulsing .card:not(.highlight-focus) {
+    body.is-pulsing .card:not(.highlight-focus) {
       pointer-events: none;
     }
     summary::-webkit-details-marker {
@@ -115,10 +116,10 @@
                 </div>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-2 mt-4 md:mt-0">
-                <a href="#card-title-1" class="hero-step text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear HU</a>
-                <a href="#card-title-2" class="hero-step text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear Requerimiento</a>
-                <a href="#card-title-2" class="hero-step text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear Incidente</a>
-                <a href="#card-title-3" class="hero-step text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Solicitud Acceso</a>
+                <a href="#card-title-1" class="text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear HU</a>
+                <a href="#card-title-2" class="text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear Requerimiento</a>
+                <a href="#card-title-2" class="text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Crear Incidente</a>
+                <a href="#card-title-3" class="text-xs font-semibold text-warm-medium no-underline px-4 py-2 rounded-full transition-all border border-transparent hover:text-experian-dark-blue hover:bg-experian-warm-bg hover:border-warm-border">Solicitud Acceso</a>
                 <a href="https://experian.service-now.com/nav_to.do?uri=%2Fcom.glideapp.servicecatalog_category_view.do%3Fv%3D1%26sysparm_category%3De15706fc0a0a0aa7007fc21e1ab70c2f" target="_blank" class="text-xs font-semibold text-white no-underline px-5 py-2 rounded-full bg-gradient-to-br from-experian-dark-blue to-experian-purple transition-transform duration-300 ml-1 hover:-translate-y-0.5 hover:shadow-lg">Ir a ServiceNow</a>
             </div>
         </nav>
@@ -462,14 +463,14 @@
                                 document.querySelector(targetId);
                             if (cardContainer) {
                                 cardContainer.classList.remove('highlight-focus');
-                                experianContainer.classList.remove('is-pulsing');
+                                document.body.classList.remove('is-pulsing');
                                 void cardContainer.offsetWidth; // Reflow
                                 cardContainer.classList.add('highlight-focus');
-                                experianContainer.classList.add('is-pulsing');
+                                document.body.classList.add('is-pulsing');
 
                                 setTimeout(() => {
                                     cardContainer.classList.remove('highlight-focus');
-                                    experianContainer.classList.remove('is-pulsing');
+                                    document.body.classList.remove('is-pulsing');
                                 }, 2500);
                             }
                         }
@@ -478,4 +479,4 @@
             })();
         </script>
     </div>
-</div>
+</div>"""
