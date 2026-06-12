@@ -1,754 +1,769 @@
 <style>
-        .experian-container *,
-        .experian-container *::before,
-        .experian-container *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .experian-container *,
+    .experian-container *::before,
+    .experian-container *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        :root {
-            --experian-dark-blue: #1D4F91;
-            --experian-light-blue: #426DA9;
-            --experian-purple: #77127B;
-            --experian-raspberry: #C1188B;
-            --experian-magenta: #E80070;
-            --experian-white: #FFFFFF;
-            --bg-warm-casual: #FAF7F2;
-            --card-warm-border: #EFEAE2;
-            --text-warm-dark: #2F2A26;
-            --text-warm-medium: #6E6760;
-            --font-family: 'Inter', sans-serif;
-            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+    :root {
+        --experian-dark-blue: #1D4F91;
+        --experian-light-blue: #426DA9;
+        --experian-purple: #77127B;
+        --experian-raspberry: #C1188B;
+        --experian-magenta: #E80070;
+        --experian-white: #FFFFFF;
+        --bg-warm-casual: #FAF7F2;
+        --card-warm-border: #EFEAE2;
+        --text-warm-dark: #2F2A26;
+        --text-warm-medium: #6E6760;
+        --font-family: 'Inter', sans-serif;
+        --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 
-        [id] {
-            scroll-margin-top: 110px;
-        }
+    [id] {
+        scroll-margin-top: 110px;
+    }
 
-        .experian-container {
-            font-family: var(--font-family);
-            background: linear-gradient(135deg, #f7f8fb 0%, #fdf6fa 50%, #f7f8fb 100%);
-            /*background-color: var(--bg-warm-casual);*/
-            color: var(--text-warm-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            padding: 3rem 1.5rem;
-        }
+    .experian-container {
+        font-family: var(--font-family);
+        background: linear-gradient(135deg, #f7f8fb 0%, #fdf6fa 50%, #f7f8fb 100%);
+        /*background-color: var(--bg-warm-casual);*/
+        color: var(--text-warm-dark);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding: 3rem 1.5rem;
+    }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 
-        .svg-icon {
-            width: 1em;
-            height: 1em;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+    .svg-icon {
+        width: 1em;
+        height: 1em;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 0.6rem 0.6rem 1.25rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--card-warm-border);
-            border-radius: 9999px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px -5px rgba(29, 79, 145, 0.08);
-            position: sticky;
-            top: 1.5rem;
-            z-index: 1000;
-        }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--card-warm-border);
+        border-radius: 9999px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px -5px rgba(29, 79, 145, 0.08);
+        position: sticky;
+        top: 1.5rem;
+        z-index: 1000;
+    }
 
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
 
-        .navbar-logo {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--experian-purple) 0%, var(--experian-magenta) 100%);
-            border-radius: 50%;
-            color: var(--experian-white);
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 2px 6px rgba(119, 18, 123, 0.2);
-        }
+    .navbar-logo {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--experian-purple) 0%, var(--experian-magenta) 100%);
+        border-radius: 50%;
+        color: var(--experian-white);
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 2px 6px rgba(119, 18, 123, 0.2);
+    }
 
-        .navbar-title {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--experian-dark-blue);
-            letter-spacing: 0.05em;
-        }
+    .navbar-title {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--experian-dark-blue);
+        letter-spacing: 0.05em;
+    }
 
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
 
-        .nav-link {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-warm-medium);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            transition: var(--transition-smooth);
-            border: 1px solid transparent;
-        }
+    .nav-link {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-warm-medium);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        transition: var(--transition-smooth);
+        border: 1px solid transparent;
+    }
 
-        .nav-link:hover {
-            color: var(--experian-dark-blue);
-            background-color: var(--bg-warm-casual);
-            border-color: var(--card-warm-border);
-        }
+    .nav-link:hover {
+        color: var(--experian-dark-blue);
+        background-color: var(--bg-warm-casual);
+        border-color: var(--card-warm-border);
+    }
 
-        .nav-btn-primary {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--experian-white);
-            text-decoration: none;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            background: linear-gradient(135deg, var(--experian-dark-blue) 0%, var(--experian-purple) 100%);
-            transition: var(--transition-smooth);
-            margin-left: 0.25rem;
-        }
+    .nav-btn-primary {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--experian-white);
+        text-decoration: none;
+        padding: 0.5rem 1.25rem;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, var(--experian-dark-blue) 0%, var(--experian-purple) 100%);
+        transition: var(--transition-smooth);
+        margin-left: 0.25rem;
+    }
 
-        .nav-btn-primary:hover {
-            box-shadow: 0 4px 10px rgba(119, 18, 123, 0.3);
-            transform: translateY(-1px);
-        }
+    .nav-btn-primary:hover {
+        box-shadow: 0 4px 10px rgba(119, 18, 123, 0.3);
+        transform: translateY(-1px);
+    }
 
-        .section-heading {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            margin-bottom: -1rem;
-        }
+    .section-heading {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: -1rem;
+    }
 
-        .section-heading h2 {
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: var(--experian-dark-blue);
-            letter-spacing: -0.02em;
-        }
+    .section-heading h2 {
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: var(--experian-dark-blue);
+        letter-spacing: -0.02em;
+    }
 
-        .section-heading p {
-            font-size: 1rem;
-            color: var(--text-warm-medium);
-            font-weight: 500;
+    .section-heading p {
+        font-size: 1rem;
+        color: var(--text-warm-medium);
+        font-weight: 500;
+    }
+
+    .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .card,
+    .info-section,
+    .team-contact-card {
+        background-color: var(--experian-white);
+        border: 1px solid var(--card-warm-border);
+        border-radius: 18px;
+        box-shadow: 0 4px 15px -3px rgba(139, 126, 116, 0.04);
+        transition: var(--transition-smooth);
+    }
+
+    .card,
+    .team-contact-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card {
+        --accent-color: var(--experian-dark-blue);
+        padding: 1.75rem;
+    }
+
+    .card:hover,
+    .team-contact-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 15px 30px -10px rgba(139, 126, 116, 0.12), 0 0 0 1px var(--accent-color);
+    }
+
+    .team-contact-card:hover {
+        border-color: var(--experian-dark-blue);
+        box-shadow: 0 10px 20px -5px rgba(139, 126, 116, 0.12);
+    }
+
+    .card-header-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: var(--transition-smooth);
+        background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
+        color: var(--accent-color);
+        font-size: 1.15rem;
+    }
+
+    .card:hover .card-icon {
+        background-color: var(--accent-color);
+        color: var(--experian-white);
+        transform: scale(1.05);
+    }
+
+    .card-title,
+    .info-title,
+    .team-section-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-warm-dark);
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+    }
+
+    .info-title,
+    .team-section-title {
+        font-size: 1.35rem;
+        color: var(--experian-dark-blue);
+    }
+
+    .card-description {
+        font-size: 0.875rem;
+        color: var(--text-warm-medium);
+        margin-bottom: 1.5rem;
+        min-height: 66px;
+        line-height: 1.5;
+    }
+
+    .card-list {
+        list-style: none;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .card-list-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .check-bullet {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
+        color: var(--accent-color);
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: var(--transition-smooth);
+        font-size: 0.75rem;
+    }
+
+    .card:hover .check-bullet {
+        transform: scale(1.1);
+        background-color: var(--accent-color);
+        color: var(--experian-white);
+    }
+
+    .team-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .team-member {
+        border: 1px solid var(--card-warm-border);
+        border-radius: 10px;
+        background-color: var(--bg-warm-casual);
+        overflow: hidden;
+        transition: var(--transition-smooth);
+        flex-shrink: 0;
+    }
+
+    .team-member[open] {
+        border-color: var(--accent-color);
+        background-color: var(--experian-white);
+    }
+
+    summary {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.6rem;
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .member-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: color-mix(in srgb, var(--accent-color) 15%, #FFFFFF);
+        color: var(--accent-color);
+        font-weight: 700;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+
+    .member-info {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    .member-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .member-role {
+        font-size: 0.7rem;
+        color: var(--text-warm-medium);
+    }
+
+    .details-arrow {
+        margin-left: auto;
+        color: var(--text-warm-medium);
+        display: flex;
+        align-items: center;
+        transition: transform 0.25s ease;
+    }
+
+    .team-member[open] .details-arrow {
+        transform: rotate(180deg);
+        color: var(--accent-color);
+    }
+
+    .member-detail {
+        padding: 0.4rem 0.6rem 0.6rem 2.5rem;
+        font-size: 0.75rem;
+        color: var(--text-warm-medium);
+        line-height: 1.4;
+        border-top: 1px dashed var(--card-warm-border);
+    }
+
+    .member-contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        text-decoration: none;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        background-color: color-mix(in srgb, var(--accent-color) 8%, transparent);
+        transition: var(--transition-smooth);
+    }
+
+    .member-contact-btn:hover {
+        background-color: var(--accent-color);
+        color: var(--experian-white);
+    }
+
+    .card-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-family: var(--font-family);
+        font-size: 0.875rem;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        text-decoration: none;
+        border: 1.5px solid var(--accent-color);
+        background-color: var(--experian-white);
+        color: var(--accent-color);
+        gap: 0.4rem;
+    }
+
+    .card:hover .card-button {
+        background-color: var(--accent-color);
+        color: var(--experian-white);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 4rem;
+        align-items: center;
+        background-color: var(--experian-white);
+        border-radius: 24px;
+        padding: 4rem;
+        border: 1px solid var(--card-warm-border);
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px -3px rgba(139, 126, 116, 0.04);
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .hero-badge {
+        align-self: flex-start;
+        background-color: color-mix(in srgb, var(--experian-magenta) 8%, #FFFFFF);
+        color: var(--experian-magenta);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.45rem 1rem;
+        border-radius: 9999px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid color-mix(in srgb, var(--experian-magenta) 15%, transparent);
+    }
+
+    .hero-title {
+        font-size: 3.65rem;
+        font-weight: 800;
+        color: var(--text-warm-dark);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+        color: var(--experian-magenta);
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        color: var(--text-warm-medium);
+        line-height: 1.6;
+        margin-top: 0.5rem;
+    }
+
+    .hero-panel {
+        background: linear-gradient(180deg, #F4F7FB 0%, #FFFFFF 100%);
+        border-radius: 20px;
+        padding: 2.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        border: 1px solid color-mix(in srgb, var(--experian-dark-blue) 12%, transparent);
+        box-shadow: 0 12px 30px -10px rgba(29, 79, 145, 0.12);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--experian-dark-blue) 0%, var(--experian-purple) 50%, var(--experian-magenta) 100%);
+    }
+
+    .hero-panel-header {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--card-warm-border);
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-panel-icon {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, var(--experian-dark-blue) 0%, var(--experian-purple) 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--experian-white);
+        box-shadow: 0 4px 10px rgba(119, 18, 123, 0.2);
+    }
+
+    .hero-panel-icon svg {
+        font-size: 1.35rem;
+    }
+
+    .hero-panel-title h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-warm-dark);
+        margin-bottom: 0.2rem;
+        letter-spacing: -0.01em;
+    }
+
+    .hero-panel-title p {
+        font-size: 0.85rem;
+        color: var(--text-warm-medium);
+        line-height: 1.4;
+    }
+
+    .hero-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-step {
+        background: var(--experian-white);
+        border: 1px solid var(--card-warm-border);
+        border-radius: 12px;
+        padding: 0.85rem 1.15rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: var(--transition-smooth);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .hero-step:hover {
+        transform: translateX(4px);
+        border-color: var(--experian-purple);
+        box-shadow: 0 4px 12px rgba(119, 18, 123, 0.08);
+        background-color: #FAFAFB;
+    }
+
+    .hero-step:hover .hero-step-icon {
+        background-color: var(--experian-purple);
+        color: var(--experian-white);
+        transform: scale(1.1) rotate(-5deg);
+        box-shadow: 0 4px 10px color-mix(in srgb, var(--experian-purple) 30%, transparent);
+    }
+
+    .hero-step-icon {
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: color-mix(in srgb, var(--experian-purple) 8%, #FFFFFF);
+        border-radius: 8px;
+        flex-shrink: 0;
+        color: var(--experian-purple);
+        transition: var(--transition-bounce);
+    }
+
+    .hero-step-text h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-warm-dark);
+        margin-bottom: 0.1rem;
+    }
+
+    .hero-step-text p {
+        font-size: 0.75rem;
+        color: var(--text-warm-medium);
+        line-height: 1.3;
+    }
+
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .team-section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--card-warm-border);
+        padding-bottom: 1rem;
+    }
+
+    .team-section-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-warm-medium);
+    }
+
+    .team-contact-card {
+        padding: 1.5rem;
+        align-items: center;
+        --avatar-color: var(--experian-dark-blue);
+    }
+
+    .team-avatar-lg {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--experian-white);
+        background: linear-gradient(135deg, var(--avatar-color) 0%, color-mix(in srgb, var(--avatar-color) 60%, #FFFFFF) 100%);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .team-card-name {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .team-card-role {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-warm-medium);
+        margin-bottom: 1rem;
+    }
+
+    .team-card-contacts {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        border-top: 1px solid var(--card-warm-border);
+        padding-top: 1rem;
+    }
+
+    .team-contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        font-size: 0.775rem;
+        color: var(--text-warm-medium);
+        text-decoration: none;
+        transition: var(--transition-smooth);
+    }
+
+    .team-contact-item:hover {
+        color: var(--experian-dark-blue);
+    }
+
+    .team-contact-item svg {
+        flex-shrink: 0;
+        font-size: 0.75rem;
+    }
+
+    @media (max-width:1024px) {
+        .hero-section {
+            grid-template-columns: 1fr;
+            padding: 3rem;
+            gap: 3rem;
         }
 
         .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
+    }
 
-        .card,
-        .info-section,
-        .team-contact-card {
-            background-color: var(--experian-white);
-            border: 1px solid var(--card-warm-border);
-            border-radius: 18px;
-            box-shadow: 0 4px 15px -3px rgba(139, 126, 116, 0.04);
-            transition: var(--transition-smooth);
-        }
-
-        .card,
-        .team-contact-card {
-            display: flex;
+    @media (max-width:768px) {
+        .navbar {
             flex-direction: column;
-            justify-content: space-between;
+            border-radius: 20px;
+            padding: 1.25rem;
+            gap: 1rem;
         }
 
-        .card {
-            --accent-color: var(--experian-dark-blue);
-            padding: 1.75rem;
-        }
-
-        .card:hover,
-        .team-contact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 15px 30px -10px rgba(139, 126, 116, 0.12), 0 0 0 1px var(--accent-color);
-        }
-
-        .team-contact-card:hover {
-            border-color: var(--experian-dark-blue);
-            box-shadow: 0 10px 20px -5px rgba(139, 126, 116, 0.12);
-        }
-
-        .card-header-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
+        .navbar-menu {
+            flex-wrap: wrap;
             justify-content: center;
-            flex-shrink: 0;
-            transition: var(--transition-smooth);
-            background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
-            color: var(--accent-color);
-            font-size: 1.15rem;
-        }
-
-        .card:hover .card-icon {
-            background-color: var(--accent-color);
-            color: var(--experian-white);
-            transform: scale(1.05);
-        }
-
-        .card-title,
-        .info-title,
-        .team-section-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-warm-dark);
-            letter-spacing: -0.01em;
-            line-height: 1.3;
-        }
-
-        .info-title,
-        .team-section-title {
-            font-size: 1.35rem;
-            color: var(--experian-dark-blue);
-        }
-
-        .card-description {
-            font-size: 0.875rem;
-            color: var(--text-warm-medium);
-            margin-bottom: 1.5rem;
-            min-height: 66px;
-            line-height: 1.5;
-        }
-
-        .card-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .card-list-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.65rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .check-bullet {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            background-color: color-mix(in srgb, var(--accent-color) 8%, #FFFFFF);
-            color: var(--accent-color);
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 1px;
-            transition: var(--transition-smooth);
-            font-size: 0.75rem;
-        }
-
-        .card:hover .check-bullet {
-            transform: scale(1.1);
-            background-color: var(--accent-color);
-            color: var(--experian-white);
-        }
-
-        .team-list {
-            display: flex;
-            flex-direction: column;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .team-member {
-            border: 1px solid var(--card-warm-border);
-            border-radius: 10px;
-            background-color: var(--bg-warm-casual);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            flex-shrink: 0;
-        }
-
-        .team-member[open] {
-            border-color: var(--accent-color);
-            background-color: var(--experian-white);
-        }
-
-        summary {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem;
-            cursor: pointer;
-            list-style: none;
-            outline: none;
-            user-select: none;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .member-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background-color: color-mix(in srgb, var(--accent-color) 15%, #FFFFFF);
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-        }
-
-        .member-info {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .member-name {
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .member-role {
-            font-size: 0.7rem;
-            color: var(--text-warm-medium);
-        }
-
-        .details-arrow {
-            margin-left: auto;
-            color: var(--text-warm-medium);
-            display: flex;
-            align-items: center;
-            transition: transform 0.25s ease;
-        }
-
-        .team-member[open] .details-arrow {
-            transform: rotate(180deg);
-            color: var(--accent-color);
-        }
-
-        .member-detail {
-            padding: 0.4rem 0.6rem 0.6rem 2.5rem;
-            font-size: 0.75rem;
-            color: var(--text-warm-medium);
-            line-height: 1.4;
-            border-top: 1px dashed var(--card-warm-border);
-        }
-
-        .member-contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 0.6rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            text-decoration: none;
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            background-color: color-mix(in srgb, var(--accent-color) 8%, transparent);
-            transition: var(--transition-smooth);
-        }
-        
-        .member-contact-btn:hover {
-            background-color: var(--accent-color);
-            color: var(--experian-white);
-        }
-
-        .card-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            font-family: var(--font-family);
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-            border: 1.5px solid var(--accent-color);
-            background-color: var(--experian-white);
-            color: var(--accent-color);
-            gap: 0.4rem;
-        }
-
-        .card:hover .card-button {
-            background-color: var(--accent-color);
-            color: var(--experian-white);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .hero-section {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-            background-color: var(--experian-white);
-            border-radius: 24px;
-            padding: 4rem;
-            border: 1px solid var(--card-warm-border);
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 15px -3px rgba(139, 126, 116, 0.04);
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .hero-badge {
-            align-self: flex-start;
-            background-color: color-mix(in srgb, var(--experian-magenta) 8%, #FFFFFF);
-            color: var(--experian-magenta);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.45rem 1rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: 1px solid color-mix(in srgb, var(--experian-magenta) 15%, transparent);
+            padding: 1.5rem;
+            gap: 2rem;
         }
 
         .hero-title {
-            font-size: 3.65rem;
-            font-weight: 800;
-            color: var(--text-warm-dark);
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-title span {
-            color: var(--experian-magenta);
-        }
-
-        .hero-description {
-            font-size: 0.95rem;
-            color: var(--text-warm-medium);
-            line-height: 1.6;
-            margin-top: 0.5rem;
+            font-size: 2.25rem;
         }
 
         .hero-panel {
-            background: linear-gradient(180deg, #F4F7FB 0%, #FFFFFF 100%);
-            border-radius: 20px;
-            padding: 2.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            border: 1px solid color-mix(in srgb, var(--experian-dark-blue) 12%, transparent);
-            box-shadow: 0 12px 30px -10px rgba(29, 79, 145, 0.12);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--experian-dark-blue) 0%, var(--experian-purple) 50%, var(--experian-magenta) 100%);
-        }
-
-        .hero-panel-header {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed var(--card-warm-border);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-panel-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--experian-dark-blue) 0%, var(--experian-purple) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--experian-white);
-            box-shadow: 0 4px 10px rgba(119, 18, 123, 0.2);
-        }
-
-        .hero-panel-icon svg {
-            font-size: 1.35rem;
-        }
-
-        .hero-panel-title h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-warm-dark);
-            margin-bottom: 0.2rem;
-            letter-spacing: -0.01em;
-        }
-
-        .hero-panel-title p {
-            font-size: 0.85rem;
-            color: var(--text-warm-medium);
-            line-height: 1.4;
-        }
-
-        .hero-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-step {
-            background: var(--experian-white);
-            border: 1px solid var(--card-warm-border);
-            border-radius: 12px;
-            padding: 0.85rem 1.15rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: var(--transition-smooth);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        .hero-step:hover {
-            transform: translateX(4px);
-            border-color: var(--experian-purple);
-            box-shadow: 0 4px 12px rgba(119, 18, 123, 0.08);
-            background-color: #FAFAFB;
-        }
-
-        .hero-step:hover .hero-step-icon {
-            background-color: var(--experian-purple);
-            color: var(--experian-white);
-            transform: scale(1.1) rotate(-5deg);
-            box-shadow: 0 4px 10px color-mix(in srgb, var(--experian-purple) 30%, transparent);
-        }
-
-        .hero-step-icon {
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: color-mix(in srgb, var(--experian-purple) 8%, #FFFFFF);
-            border-radius: 8px;
-            flex-shrink: 0;
-            color: var(--experian-purple);
-            transition: var(--transition-bounce);
-        }
-
-        .hero-step-text h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-warm-dark);
-            margin-bottom: 0.1rem;
-        }
-
-        .hero-step-text p {
-            font-size: 0.75rem;
-            color: var(--text-warm-medium);
-            line-height: 1.3;
-        }
-
-        .team-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .team-section-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            border-bottom: 1px solid var(--card-warm-border);
-            padding-bottom: 1rem;
-        }
-
-        .team-section-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-warm-medium);
-        }
-
-        .team-contact-card {
             padding: 1.5rem;
-            align-items: center;
-            --avatar-color: var(--experian-dark-blue);
         }
 
-        .team-avatar-lg {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--experian-white);
-            background: linear-gradient(135deg, var(--avatar-color) 0%, color-mix(in srgb, var(--avatar-color) 60%, #FFFFFF) 100%);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        .grid-4 {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+    }
+
+    @keyframes highlight-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(119, 18, 123, 0.6);
+            border-color: var(--experian-purple);
+            transform: scale(1.02);
         }
 
-        .team-card-name {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+        50% {
+            box-shadow: 0 0 0 15px rgba(119, 18, 123, 0);
+            border-color: var(--experian-purple);
+            transform: scale(1.02);
         }
 
-        .team-card-role {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-warm-medium);
-            margin-bottom: 1rem;
+        100% {
+            box-shadow: 0 0 0 0 rgba(119, 18, 123, 0);
+            transform: scale(1);
         }
+    }
 
-        .team-card-contacts {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            border-top: 1px solid var(--card-warm-border);
-            padding-top: 1rem;
-        }
+    .highlight-focus {
+        animation: highlight-pulse 2.5s ease-out forwards;
+        position: relative;
+        z-index: 10;
+    }
 
-        .team-contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            font-size: 0.775rem;
-            color: var(--text-warm-medium);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .team-contact-item:hover {
-            color: var(--experian-dark-blue);
-        }
-
-        .team-contact-item svg {
-            flex-shrink: 0;
-            font-size: 0.75rem;
-        }
-
-        @media (max-width:1024px) {
-            .hero-section {
-                grid-template-columns: 1fr;
-                padding: 3rem;
-                gap: 3rem;
-            }
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width:768px) {
-            .navbar {
-                flex-direction: column;
-                border-radius: 20px;
-                padding: 1.25rem;
-                gap: 1rem;
-            }
-            .navbar-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .hero-section {
-                padding: 1.5rem;
-                gap: 2rem;
-            }
-
-            .hero-title {
-                font-size: 2.25rem;
-            }
-
-            .hero-panel {
-                padding: 1.5rem;
-            }
-
-            .grid-4 {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-        }
-
-        @keyframes highlight-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(119, 18, 123, 0.6); border-color: var(--experian-purple); transform: scale(1.02); }
-            50% { box-shadow: 0 0 0 15px rgba(119, 18, 123, 0); border-color: var(--experian-purple); transform: scale(1.02); }
-            100% { box-shadow: 0 0 0 0 rgba(119, 18, 123, 0); transform: scale(1); }
-        }
-
-        .highlight-focus {
-            animation: highlight-pulse 2.5s ease-out forwards;
-            position: relative;
-            z-index: 10;
-        }
-
-        body.is-pulsing .card:not(.highlight-focus) {
-            pointer-events: none;
-        }
-    </style>
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    body.is-pulsing .card:not(.highlight-focus) {
+        pointer-events: none;
+    }
+</style>
+<!-- Google Fonts - Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <div class="experian-container">
     <svg style="display:none;">
@@ -816,55 +831,73 @@
         <section class="hero-section">
             <div class="hero-content">
                 <span class="hero-badge">
-                    <svg class="svg-icon" style="font-size: 1.1rem;"><use href="#icon-help"></use></svg>
+                    <svg class="svg-icon" style="font-size: 1.1rem;">
+                        <use href="#icon-help"></use>
+                    </svg>
                     Habilitación Regional
                 </span>
                 <h1 class="hero-title">Bienvenidos al<br><span>Squad Regional</span><br>de Salesforce</h1>
-                <p class="hero-description">Nuestro equipo está dedicado a recibir las necesidades regionales para mejorar los procesos gestionados a través de Salesforce, con el fin de generar eficiencias a nivel organizacional, con soluciones prácticas y de alto impacto, generando valor, no solo desarrollando soluciones en Salesforce e integrándolas con otros sistemas, sino también evaluando la utilidad y beneficio para la compañía.</p>
+                <p class="hero-description">Nuestro equipo está dedicado a recibir las necesidades regionales para
+                    mejorar los procesos gestionados a través de Salesforce, con el fin de generar eficiencias a nivel
+                    organizacional, con soluciones prácticas y de alto impacto, generando valor, no solo desarrollando
+                    soluciones en Salesforce e integrándolas con otros sistemas, sino también evaluando la utilidad y
+                    beneficio para la compañía.</p>
             </div>
-            
+
             <div class="hero-panel">
                 <div class="hero-panel-header">
                     <div class="hero-panel-icon">
-                        <svg class="svg-icon"><use href="#icon-check"></use></svg>
+                        <svg class="svg-icon">
+                            <use href="#icon-check"></use>
+                        </svg>
                     </div>
                     <div class="hero-panel-title">
                         <h3>¿Qué necesitas hacer hoy?</h3>
                         <p>Elige una opción para gestionar tu solicitud</p>
                     </div>
                 </div>
-                
+
                 <div class="hero-steps">
                     <a href="#card-title-1" class="hero-step">
-                        <div class="hero-step-icon"><svg class="svg-icon"><use href="#icon-file"></use></svg></div>
+                        <div class="hero-step-icon"><svg class="svg-icon">
+                                <use href="#icon-file"></use>
+                            </svg></div>
                         <div class="hero-step-text">
                             <h4>Nueva necesidad o mejora</h4>
                             <p>Crear HU</p>
                         </div>
                     </a>
                     <a href="#card-title-2" class="hero-step">
-                        <div class="hero-step-icon"><svg class="svg-icon"><use href="#icon-wrench"></use></svg></div>
+                        <div class="hero-step-icon"><svg class="svg-icon">
+                                <use href="#icon-wrench"></use>
+                            </svg></div>
                         <div class="hero-step-text">
                             <h4>Soporte o configuración</h4>
                             <p>Requerimiento</p>
                         </div>
                     </a>
                     <a href="#card-title-2" class="hero-step">
-                        <div class="hero-step-icon"><svg class="svg-icon"><use href="#icon-alert"></use></svg></div>
+                        <div class="hero-step-icon"><svg class="svg-icon">
+                                <use href="#icon-alert"></use>
+                            </svg></div>
                         <div class="hero-step-text">
                             <h4>Algo no funciona</h4>
                             <p>Crear incidente</p>
                         </div>
                     </a>
                     <a href="#card-title-3" class="hero-step">
-                        <div class="hero-step-icon"><svg class="svg-icon"><use href="#icon-key"></use></svg></div>
+                        <div class="hero-step-icon"><svg class="svg-icon">
+                                <use href="#icon-key"></use>
+                            </svg></div>
                         <div class="hero-step-text">
                             <h4>Necesito acceso</h4>
                             <p>Solicitud acceso</p>
                         </div>
-                    </a>                    
+                    </a>
                     <a href="#card-title-4" class="hero-step">
-                        <div class="hero-step-icon"><svg class="svg-icon"><use href="#icon-help"></use></svg></div>
+                        <div class="hero-step-icon"><svg class="svg-icon">
+                                <use href="#icon-help"></use>
+                            </svg></div>
                         <div class="hero-step-text">
                             <h4>No estoy seguro</h4>
                             <p>Contactar equipo</p>
@@ -881,7 +914,7 @@
         <main class="cards-grid grid-4">
 
 
-<!-- -------------------- Card 1 ---------------------->
+            <!-- -------------------- Card 1 ---------------------->
 
             <section class="card" style="--accent-color: var(--experian-light-blue);" aria-labelledby="card-title-1">
                 <div>
@@ -892,7 +925,8 @@
                         <h2 class="card-title" id="card-title-1">Historia de Usuario</h2>
                     </div>
                     <p class="card-description">Crea y documenta requerimientos funcionales desde la perspectiva del
-                        usuario de negocio. Utiliza esta opción para nuevos requerimientos funcionales o ajuste en Salesforce.</p>
+                        usuario de negocio. Utiliza esta opción para nuevos requerimientos funcionales o ajuste en
+                        Salesforce.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
@@ -921,7 +955,8 @@
                             </svg></div>
                         <h2 class="card-title" id="card-title-2">Requerimiento Técnico</h2>
                     </div>
-                    <p class="card-description">Utiliza esta opción cuando necesites registrar un requerimiento general que no implique un desarrollo inmediato.</p>
+                    <p class="card-description">Utiliza esta opción cuando necesites registrar un requerimiento general
+                        que no implique un desarrollo inmediato.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
@@ -957,7 +992,8 @@
                             </svg></div>
                         <h2 class="card-title" id="card-title-3">Solicitud de Acceso</h2>
                     </div>
-                    <p class="card-description">Administración de usuarios. Utiliza esta opción si necesitas acceso a Salesforce o permisos adicionales dentro de la plataforma.</p>
+                    <p class="card-description">Administración de usuarios. Utiliza esta opción si necesitas acceso a
+                        Salesforce o permisos adicionales dentro de la plataforma.</p>
                     <ul class="card-list">
                         <li class="card-list-item"><span class="check-bullet"><svg class="svg-icon">
                                     <use href="#icon-check"></use>
@@ -989,81 +1025,139 @@
                     <p class="card-description">Célula de desarrollo y soporte encargada del mantenimiento de la
                         plataforma.</p>
                     <div class="team-list">
-            <!-- -------------------- Miembro 1 ---------------------->
+                        <!-- -------------------- Miembro 1 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">AS</div>
-                                <div class="member-info"><span class="member-name">Ana Silva</span><span class="member-role">SF Admin</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Ana Silva</span><span
+                                        class="member-role">SF Admin</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Administración general, gestión de accesos, roles, perfiles y soporte del día a día en LATAM.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=ana.silva@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Administración general, gestión de accesos, roles, perfiles y soporte
+                                    del día a día en LATAM.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=ana.silva@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 2 ---------------------->
+                        <!-- -------------------- Miembro 2 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">CP</div>
-                                <div class="member-info"><span class="member-name">Carlos Pérez</span><span class="member-role">Lead Developer</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Carlos Pérez</span><span
+                                        class="member-role">Lead Developer</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Desarrollo Apex, LWC, integraciones y flujos complejos de automatización.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=carlos.perez@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Desarrollo Apex, LWC, integraciones y flujos complejos de
+                                    automatización.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=carlos.perez@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 3 ---------------------->
+                        <!-- -------------------- Miembro 3 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">MR</div>
-                                <div class="member-info"><span class="member-name">María Rodríguez</span><span class="member-role">Product Owner</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">María Rodríguez</span><span
+                                        class="member-role">Product Owner</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Definición de roadmap, priorización del backlog de solicitudes y alineación estratégica.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=maria.rodriguez@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Definición de roadmap, priorización del backlog de solicitudes y
+                                    alineación estratégica.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=maria.rodriguez@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 4 ---------------------->
+                        <!-- -------------------- Miembro 4 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">JG</div>
-                                <div class="member-info"><span class="member-name">Juan Gómez</span><span class="member-role">QA Engineer</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Juan Gómez</span><span
+                                        class="member-role">QA Engineer</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Pruebas automatizadas, reporte de bugs, aseguramiento de calidad de desarrollos.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=juan.gomez@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Pruebas automatizadas, reporte de bugs, aseguramiento de calidad de
+                                    desarrollos.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=juan.gomez@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 5 ---------------------->
+                        <!-- -------------------- Miembro 5 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">DT</div>
-                                <div class="member-info"><span class="member-name">Diana Torres</span><span class="member-role">Business Analyst</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Diana Torres</span><span
+                                        class="member-role">Business Analyst</span></div><span
+                                    class="details-arrow"><svg class="svg-icon"
+                                        style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Toma de requerimientos, análisis de procesos de negocio, dudas sobre reglas funcionales.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=diana.torres@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Toma de requerimientos, análisis de procesos de negocio, dudas sobre
+                                    reglas funcionales.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=diana.torres@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 6 ---------------------->
+                        <!-- -------------------- Miembro 6 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">AM</div>
-                                <div class="member-info"><span class="member-name">Andrés Mendoza</span><span class="member-role">Integrations Eng.</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Andrés Mendoza</span><span
+                                        class="member-role">Integrations Eng.</span></div><span
+                                    class="details-arrow"><svg class="svg-icon"
+                                        style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Fallos en integraciones con otros sistemas, APIs, validación de datos externos.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=andres.mendoza@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Fallos en integraciones con otros sistemas, APIs, validación de datos
+                                    externos.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=andres.mendoza@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
-            <!-- -------------------- Miembro 7 ---------------------->
+                        <!-- -------------------- Miembro 7 ---------------------->
                         <details class="team-member" name="team-accordion">
                             <summary>
                                 <div class="member-avatar">LR</div>
-                                <div class="member-info"><span class="member-name">Laura Restrepo</span><span class="member-role">UX/UI Designer</span></div><span class="details-arrow"><svg class="svg-icon" style="font-size:0.65rem; stroke-width:3"><use href="#icon-arrow"></use></svg></span>
+                                <div class="member-info"><span class="member-name">Laura Restrepo</span><span
+                                        class="member-role">UX/UI Designer</span></div><span class="details-arrow"><svg
+                                        class="svg-icon" style="font-size:0.65rem; stroke-width:3">
+                                        <use href="#icon-arrow"></use>
+                                    </svg></span>
                             </summary>
                             <div class="member-detail">
-                                <p>Contactar para: Mejoras en usabilidad, rediseño de pantallas, optimización de flujos de usuario.</p>
-                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=laura.restrepo@experian.com" class="member-contact-btn"><svg class="svg-icon"><use href="#icon-chat"></use></svg> Contactar</a>
+                                <p>Contactar para: Mejoras en usabilidad, rediseño de pantallas, optimización de flujos
+                                    de usuario.</p>
+                                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=laura.restrepo@experian.com"
+                                    class="member-contact-btn"><svg class="svg-icon">
+                                        <use href="#icon-chat"></use>
+                                    </svg> Contactar</a>
                             </div>
                         </details>
                     </div>
@@ -1081,18 +1175,95 @@
                     evolución de la plataforma Salesforce LATAM.</p>
             </div>
             <div class="team-cards-grid grid-4">
-                <div class="team-contact-card"><div class="team-avatar-lg">AS</div><h3 class="team-card-name">Ana Silva</h3><p class="team-card-role">Salesforce Administrator</p><div class="team-card-contacts"><a href="mailto:ana.silva@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>ana.silva@experian.com</span></a><a href="#chat-asilva" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@asilva</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">CP</div><h3 class="team-card-name">Carlos Pérez</h3><p class="team-card-role">Lead Developer</p><div class="team-card-contacts"><a href="mailto:carlos.perez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>carlos.perez@experian.com</span></a><a href="#chat-cperez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@cperez</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">MR</div><h3 class="team-card-name">María Rodríguez</h3><p class="team-card-role">Product Owner</p><div class="team-card-contacts"><a href="mailto:maria.rodriguez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>maria.rodriguez@experian.com</span></a><a href="#chat-mrodriguez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@mrodriguez</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">JG</div><h3 class="team-card-name">Juan Gómez</h3><p class="team-card-role">QA Automation Engineer</p><div class="team-card-contacts"><a href="mailto:juan.gomez@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>juan.gomez@experian.com</span></a><a href="#chat-jgomez" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@jgomez</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">DT</div><h3 class="team-card-name">Diana Torres</h3><p class="team-card-role">Business Analyst</p><div class="team-card-contacts"><a href="mailto:diana.torres@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>diana.torres@experian.com</span></a><a href="#chat-dtorres" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@dtorres</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">AM</div><h3 class="team-card-name">Andrés Mendoza</h3><p class="team-card-role">Integrations Engineer</p><div class="team-card-contacts"><a href="mailto:andres.mendoza@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>andres.mendoza@experian.com</span></a><a href="#chat-amendoza" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@amendoza</span></a></div></div>
-                <div class="team-contact-card"><div class="team-avatar-lg">LR</div><h3 class="team-card-name">Laura Restrepo</h3><p class="team-card-role">UX/UI Designer</p><div class="team-card-contacts"><a href="mailto:laura.restrepo@experian.com" class="team-contact-item"><svg class="svg-icon"><use href="#icon-email"></use></svg><span>laura.restrepo@experian.com</span></a><a href="#chat-lrestrepo" class="team-contact-item"><svg class="svg-icon"><use href="#icon-chat"></use></svg><span>@lrestrepo</span></a></div></div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">AS</div>
+                    <h3 class="team-card-name">Ana Silva</h3>
+                    <p class="team-card-role">Salesforce Administrator</p>
+                    <div class="team-card-contacts"><a href="mailto:ana.silva@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>ana.silva@experian.com</span></a><a href="#chat-asilva"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@asilva</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">CP</div>
+                    <h3 class="team-card-name">Carlos Pérez</h3>
+                    <p class="team-card-role">Lead Developer</p>
+                    <div class="team-card-contacts"><a href="mailto:carlos.perez@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>carlos.perez@experian.com</span></a><a href="#chat-cperez"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@cperez</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">MR</div>
+                    <h3 class="team-card-name">María Rodríguez</h3>
+                    <p class="team-card-role">Product Owner</p>
+                    <div class="team-card-contacts"><a href="mailto:maria.rodriguez@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>maria.rodriguez@experian.com</span></a><a href="#chat-mrodriguez"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@mrodriguez</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">JG</div>
+                    <h3 class="team-card-name">Juan Gómez</h3>
+                    <p class="team-card-role">QA Automation Engineer</p>
+                    <div class="team-card-contacts"><a href="mailto:juan.gomez@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>juan.gomez@experian.com</span></a><a href="#chat-jgomez"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@jgomez</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">DT</div>
+                    <h3 class="team-card-name">Diana Torres</h3>
+                    <p class="team-card-role">Business Analyst</p>
+                    <div class="team-card-contacts"><a href="mailto:diana.torres@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>diana.torres@experian.com</span></a><a href="#chat-dtorres"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@dtorres</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">AM</div>
+                    <h3 class="team-card-name">Andrés Mendoza</h3>
+                    <p class="team-card-role">Integrations Engineer</p>
+                    <div class="team-card-contacts"><a href="mailto:andres.mendoza@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>andres.mendoza@experian.com</span></a><a href="#chat-amendoza"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@amendoza</span></a></div>
+                </div>
+                <div class="team-contact-card">
+                    <div class="team-avatar-lg">LR</div>
+                    <h3 class="team-card-name">Laura Restrepo</h3>
+                    <p class="team-card-role">UX/UI Designer</p>
+                    <div class="team-card-contacts"><a href="mailto:laura.restrepo@experian.com"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-email"></use>
+                            </svg><span>laura.restrepo@experian.com</span></a><a href="#chat-lrestrepo"
+                            class="team-contact-item"><svg class="svg-icon">
+                                <use href="#icon-chat"></use>
+                            </svg><span>@lrestrepo</span></a></div>
+                </div>
             </div>
         </section>
-        
+
         <script>
-            (function() {
+            (function () {
                 // Al ejecutarse justo antes de cerrar el contenedor, los elementos ya existen
                 // Usamos delegación de eventos a nivel del contenedor principal
                 const experianContainer = document.querySelector('.experian-container');
@@ -1101,21 +1272,21 @@
                 experianContainer.addEventListener('click', e => {
                     const step = e.target.closest('.hero-step');
                     if (!step) return;
-                    
+
                     const targetId = step.getAttribute('href');
                     if (targetId && targetId.startsWith('#')) {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
-                            const cardContainer = targetElement.closest('.card') || 
-                                              (targetElement.classList.contains('team-section') ? targetElement : null) || 
-                                              document.querySelector(targetId);
+                            const cardContainer = targetElement.closest('.card') ||
+                                (targetElement.classList.contains('team-section') ? targetElement : null) ||
+                                document.querySelector(targetId);
                             if (cardContainer) {
                                 cardContainer.classList.remove('highlight-focus');
                                 document.body.classList.remove('is-pulsing');
                                 void cardContainer.offsetWidth; // Reflow
                                 cardContainer.classList.add('highlight-focus');
                                 document.body.classList.add('is-pulsing');
-                                
+
                                 setTimeout(() => {
                                     cardContainer.classList.remove('highlight-focus');
                                     document.body.classList.remove('is-pulsing');
